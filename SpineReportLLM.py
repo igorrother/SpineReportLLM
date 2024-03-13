@@ -60,14 +60,14 @@ Output: Generate a JSON object with the following structure:
 }
 
 
-Example:
+Example 1:
 Input:
 "RESSONÂNCIA MAGNÉTICA DA COLUNA LOMBOSSACRA\xa0 Método:\xa0 Realizadas sequências FSE ponderadas em T1 e T2. Planos de cortes múltiplos.\xa0 Análise:\xa0 Presença de megapófises transversas em L5, neoarticuladas ao sacro, notadamente à esquerda.  Escoliose toracolombar à esquerda. Anterolistese grau I de L3 e de L4, de aspecto degenerativo. Corpos vertebrais com altura e alinhamento posterior conservados, com osteófitos marginais difusos e predominantemente anteriores.  Não se observam lesões ósseas focais agressivas. Desidratação  discal  difusa  com  redução  das  alturas,  poupando  relativamente  L5-S1.  Observam-se  irregularidades dos platôs vertebrais com  degeneração  gasosa  intradiscal  e  tênue  edema (Modic tipo I) nos platôs vertebrais apostos de L4-L5.  Pequenas protrusões discais posteriores centrais à direita em T11-T12 e T12-L1, moldando o saco dural sem conflitos radiculares. Abaulamentos  discais  posteriores  em  L1-L2  a L3-L4, assimétricos, com componentes  protrusos subarticular/posterior central direito, moldando o saco  dural  e  se  insinuando  levemente  para  as  respectivas  bases  foraminais, sem conflitos radiculares definidos. Exposição  discal associada a abaulamento posterior em L4-L5, que molda o saco  dural e se insinua para as bases foraminais e que em conjunto com a listese  anterior e a hipertrofia degenerativa das interapofisárias reduz a  amplitude  foraminal  esquerda,  tocando  a raiz emergente de L4 deste lado. Abaulamento  discal  posterior  em  L5-S1  com  fissura do anel fibroso e componente  protruso  foraminal  esquerdo,  tocando  a  raiz  emergente  esquerda de L5. Alterações  degenerativas  difusas  das  articulações  interapofisárias,  predominando  inferiormente  e  notadamente  em  L4-L5 no qual se observa pequeno  derrame  articular  bilateral.  Nota-se,  também,  cisto  artrossinovial  intracanal  à esquerda de L4-L5 e medindo cerca de 0,7 cm moldando a face posterolateral esquerda do saco dural. Espessamento dos ligamentos amarelos em L2-L3 a L4-L5 Canal vertebral sem estenoses significativas. Demais forames intervertebrais livres. Cone medular tópico e com o sinal homogêneo. Cisto de Tarlov interior do canal vertebral sacral, com remodelamento associado, de aspecto crônico/sequelar.  Hipertrofia dos processos espinhosos associada a redução dos espaços interespinhosos por provável atrito crônico. Hipotrofia e substituição gordurosa da musculatura paravertebral posterior inferior. Os achados da bacia serão descritos em relatório do estudo dirigido realizado na mesma data. Volumosa  distensão  líquida  junto  em  topografia  do  endométrio,  com espessamento  irregular das paredes, parcialmente incluídos neste estudo.  Opinião: Espondilodiscoartropatia  degenerativa  multissegmentar da coluna lombar, com  as  repercussões  foraminais  e  radiculares  pormenorizadas  acima, notadamente  em  L4-L5.  Não  se  observam  alterações  evolutivas  significativas  dignas  de  nota  quando  comparado  com  o  estudo  de  tomografia  computadorizada  da  coluna lombar de 08/07/2022, respeitando as diferenças técnicas entre os métodos. Volumosa  distensão  líquida  junto  em  topografia  do  endométrio,  com espessamento  irregular das paredes, parcialmente incluídos neste estudo. Sugere-se  complementação  com  estudo  específico  para melhor avaliação deste achado, a critério clínico.  Demais achados acima descritos."
 
 Output:
 
 {"Category": {
-  "Escoliose": ["Esquerda"],
+  "Escoliose": "Esquerda",
   "Espondilose": ["Difusa"],
   "Osteofito": ["Difuso"],
   "Osteofito - coluna anterior": ["Difuso"],
@@ -90,7 +90,11 @@ Output:
   "Estenose do Recesso Lateral": ["None"]
   }
 
-{{report}}
+Example 2:
+
+Input: {{report}}
+
+
 """
 
 class SpineReportLLM:
@@ -161,7 +165,7 @@ class SpineReportLLM:
 if __name__ == "__main__":
     llm = SpineReportLLM("gpt-4")
 
-    report = "RESSONÂNCIA MAGNÉTICA DA COLUNA LOMBOSSACRA \xa0 Método: \xa0 Realizadas sequências FSE ponderadas em T1 e T2. Planos de cortes múltiplos. \xa0 Análise: \xa0 Corpos vertebrais com alinhamento posterior, altura e sinal normais.  Discreta hipo-hidratação discal L4-L5 e  L5-S1.  Mínimo abaulamento discal posterior centrobilateral,  com extensão para as bases foraminais em L3-L4, sem compressão radicular.  Abaulamentos  discais  posteriores  centrobilaterais em L4-L5 e L5-S1 com extensão  para  as  bases  foraminais,   mantendo contato com emergência foraminal  da  raiz  de  L4  e  de  L5  à  esquerda, respectivamente, sem deslocá-las.  Demais discos intervertebrais com sinal normal, sem evidências de herniações relevantes. \xa0 Canal vertebral com amplitude normal. \xa0 Demais forames intervertebrais livres.  Leve artropatia degenerativa interapofisária L4-L5 e L5-S1.  Cone medular de contornos regulares e sinal homogêneo.  Edema na topografia dos ligamentos interespinhosos posterior de L5-S1, por sobrecarga mecânica. \xa0 Estruturas paravertebrais íntegras.  OPINIÃO:  Discreta discopatia degenerativa multissegmentar, com os achados acima descritos  Demais achados acima mencionados  \xa0                Laudado por:RIC CRM 69363/SP  -  DR. WILLIAM FRANK LIN   Revisado por: CRM 93763/SP  -  DR. MARCO TULIO GONZALEZ  "
+    report = "RESSONÂNCIA MAGNÉTICA DA COLUNA LOMBOSSACRA \xa0 Método: \xa0 Realizadas sequências FSE ponderadas em T1 e T2. Planos de cortes múltiplos. \xa0 Análise: \xa0 Corpos vertebrais com alinhamento posterior, altura e sinal normais.  Discreta hipo-hidratação discal L4-L5 e  L5-S1.  Mínimo abaulamento discal posterior centrobilateral,  com extensão para as bases foraminais em L3-L4, sem compressão radicular.  Abaulamentos  discais  posteriores  centrobilaterais em L4-L5 e L5-S1 com extensão  para  as  bases  foraminais,   mantendo contato com emergência foraminal  da  raiz  de  L4  e  de  L5  à  esquerda, respectivamente, sem deslocá-las.  Demais discos intervertebrais com sinal normal, sem evidências de herniações relevantes. \xa0 Canal vertebral com amplitude normal. \xa0 Demais forames intervertebrais livres.  Leve artropatia degenerativa interapofisária L4-L5 e L5-S1.  Cone medular de contornos regulares e sinal homogêneo.  Edema na topografia dos ligamentos interespinhosos posterior de L5-S1, por sobrecarga mecânica. \xa0 Estruturas paravertebrais íntegras.  OPINIÃO:  Discreta discopatia degenerativa multissegmentar, com os achados acima descritos  Demais achados acima mencionados "
 
     result = llm.analyze_report(report)
 
