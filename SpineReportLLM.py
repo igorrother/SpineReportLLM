@@ -165,7 +165,7 @@ class SpineReportLLM:
 if __name__ == "__main__":
     llm = SpineReportLLM("gpt-4")
 
-    report = "RESSONÂNCIA MAGNÉTICA DA COLUNA LOMBOSSACRA \xa0 Método: \xa0 Realizadas sequências FSE ponderadas em T1 e T2. Planos de cortes múltiplos. \xa0 Análise: \xa0 Corpos vertebrais com alinhamento posterior, altura e sinal normais.  Discreta hipo-hidratação discal L4-L5 e  L5-S1.  Mínimo abaulamento discal posterior centrobilateral,  com extensão para as bases foraminais em L3-L4, sem compressão radicular.  Abaulamentos  discais  posteriores  centrobilaterais em L4-L5 e L5-S1 com extensão  para  as  bases  foraminais,   mantendo contato com emergência foraminal  da  raiz  de  L4  e  de  L5  à  esquerda, respectivamente, sem deslocá-las.  Demais discos intervertebrais com sinal normal, sem evidências de herniações relevantes. \xa0 Canal vertebral com amplitude normal. \xa0 Demais forames intervertebrais livres.  Leve artropatia degenerativa interapofisária L4-L5 e L5-S1.  Cone medular de contornos regulares e sinal homogêneo.  Edema na topografia dos ligamentos interespinhosos posterior de L5-S1, por sobrecarga mecânica. \xa0 Estruturas paravertebrais íntegras.  OPINIÃO:  Discreta discopatia degenerativa multissegmentar, com os achados acima descritos  Demais achados acima mencionados "
+    report = None
 
     result = llm.analyze_report(report)
 
